@@ -32,7 +32,7 @@ output "kiran_access_key" {
 output "kiran_secret_key" {
   value = aws_iam_access_key.kiran.secret
   sensitive = true
-} */
+} 
 
 resource "aws_instance" "web" {
   ami           = "ami-0427090fd1714168b"
@@ -42,7 +42,7 @@ resource "aws_instance" "web" {
   tags = {
     Name = "CICD"
   }
-}
+} */
 
 resource "aws_instance" "cicd" {
   ami           = "ami-0427090fd1714168b"
