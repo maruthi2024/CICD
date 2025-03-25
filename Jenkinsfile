@@ -1,25 +1,33 @@
 pipeline {
     agent any
-    
+
+    environment {
+        AWS_ACCESS_KEY_ID     = 'AKIA46ZDFCC7X5EFTDXR'
+        AWS_SECRET_ACCESS_KEY = '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'
+    }
+
     stages {
         stage('Clone Repository') {
             steps {
                 git 'https://github.com/maruthi2024/CICD.git'
             }
         }
-        stage('Build') {
+
+        stage('Terraform Init') {
             steps {
-                echo 'Building the project...'
+                sh 'terraform init'
             }
         }
-        stage('Test') {
+
+        stage('Terraform Plan') {
             steps {
-                echo 'Running tests...'
+                sh 'terraform plan'
             }
         }
-        stage('Deploy') {
+
+        stage('Terraform Apply') {
             steps {
-                echo 'Deploying application...'
+                sh 'terraform apply -auto-approve'
             }
         }
     }
