@@ -7,12 +7,6 @@ pipeline {
     }
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/maruthi2024/CICD.git'
-            }
-        }
-
         stage('Terraform Init') {
             steps {
                 sh 'terraform init'
